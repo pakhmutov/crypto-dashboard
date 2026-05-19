@@ -33,6 +33,15 @@ export function getCoinInfo(id: string): Promise<Coin> {
   }, 60).then((arr: unknown) => (arr as Coin[])[0]);
 }
 
+export function getCoinsByIds(ids: string[]): Promise<Coin[]> {
+  return cgFetch("/coins/markets", {
+    vs_currency: "usd",
+    ids: ids.join(","),
+    order: "market_cap_desc",
+    sparkline: "false",
+  }, 30);
+}
+
 // Returns [[timestamp_ms, open, high, low, close], ...]
 export function getCoinOHLC(id: string, days: number): Promise<number[][]> {
   return cgFetch(`/coins/${id}/ohlc`, {
