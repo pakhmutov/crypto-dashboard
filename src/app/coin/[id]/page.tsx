@@ -2,18 +2,21 @@ import Image from "next/image";
 import Link from "next/link";
 import { getCoinInfo, getCoinOHLC } from "@/lib/coingecko";
 import PriceChart from "@/components/PriceChart";
-
-function fmt(n: number, opts?: Intl.NumberFormatOptions) {
-  return new Intl.NumberFormat("en-US", opts).format(n);
-}
+import PriceTicker from "@/components/PriceTicker";
 
 function fmtPrice(n: number) {
-  return fmt(n, { style: "currency", currency: "USD", maximumFractionDigits: n >= 1 ? 2 : 6 });
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: n >= 1 ? 2 : 6,
+  }).format(n);
 }
 
 function fmtLarge(n: number) {
-  if (n >= 1e9) return `$${fmt(n / 1e9, { maximumFractionDigits: 2 })}B`;
-  if (n >= 1e6) return `$${fmt(n / 1e6, { maximumFractionDigits: 2 })}M`;
+  const fmt = (v: number, d: number) =>
+    new Intl.NumberFormat("en-US", { maximumFractionDigits: d }).format(v);
+  if (n >= 1e9) return `$${fmt(n / 1e9, 2)}B`;
+  if (n >= 1e6) return `$${fmt(n / 1e6, 2)}M`;
   return fmtPrice(n);
 }
 
@@ -25,9 +28,6 @@ export async function generateMetadata({ params }: { params: Promise<{ id: strin
 export default async function CoinPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const [coin, ohlc] = await Promise.all([getCoinInfo(id), getCoinOHLC(id, 7)]);
-
-  const change = coin.price_change_percentage_24h;
-  const isPositive = change >= 0;
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
@@ -42,14 +42,11 @@ export default async function CoinPage({ params }: { params: Promise<{ id: strin
             <h1 className="text-2xl font-bold text-white">{coin.name}</h1>
             <span className="text-zinc-500 uppercase text-sm">{coin.symbol}</span>
           </div>
-          <div className="flex items-center gap-3 mt-1">
-            <span className="text-2xl font-mono font-semibold text-white">
-              {fmtPrice(coin.current_price)}
-            </span>
-            <span className={`font-mono text-sm font-medium ${isPositive ? "text-emerald-400" : "text-red-400"}`}>
-              {isPositive ? "+" : ""}{fmt(change, { maximumFractionDigits: 2 })}%
-            </span>
-          </div>
+          <PriceTicker
+            symbol={coin.symbol}
+            initialPrice={coin.current_price}
+            initialChange={coin.price_change_percentage_24h}
+          />
         </div>
       </div>
 
