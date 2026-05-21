@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import type { Coin } from '@/types/coin';
+import Sparkline from '@/components/Sparkline';
 
 function fmt(n: number, opts?: Intl.NumberFormatOptions) {
     return new Intl.NumberFormat('en-US', opts).format(n);
@@ -38,8 +39,11 @@ export default function CoinTable({ coins }: Props) {
                         <th className="py-3 pr-4 font-medium text-right hidden md:table-cell">
                             Кап.
                         </th>
-                        <th className="py-3 font-medium text-right hidden lg:table-cell">
+                        <th className="py-3 pr-4 font-medium text-right hidden lg:table-cell">
                             Объём 24ч
+                        </th>
+                        <th className="py-3 font-medium text-right hidden xl:table-cell">
+                            7д
                         </th>
                     </tr>
                 </thead>
@@ -86,8 +90,18 @@ export default function CoinTable({ coins }: Props) {
                                 <td className="py-3 pr-4 text-right text-zinc-300 hidden md:table-cell">
                                     {fmtLarge(coin.market_cap)}
                                 </td>
-                                <td className="py-3 text-right text-zinc-300 hidden lg:table-cell">
+                                <td className="py-3 pr-4 text-right text-zinc-300 hidden lg:table-cell">
                                     {fmtLarge(coin.total_volume)}
+                                </td>
+                                <td className="py-3 text-right hidden xl:table-cell">
+                                    {coin.sparkline_in_7d && (
+                                        <div className="flex justify-end">
+                                            <Sparkline
+                                                prices={coin.sparkline_in_7d.price}
+                                                positive={isPositive}
+                                            />
+                                        </div>
+                                    )}
                                 </td>
                             </tr>
                         );

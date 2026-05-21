@@ -21,7 +21,7 @@ export function getTopCoins(perPage = 50): Promise<Coin[]> {
     order: "market_cap_desc",
     per_page: String(perPage),
     page: "1",
-    sparkline: "false",
+    sparkline: "true",
   });
 }
 
