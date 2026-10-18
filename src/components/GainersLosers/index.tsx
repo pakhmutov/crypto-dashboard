@@ -42,7 +42,7 @@ export default function GainersLosers({ coins }: Props) {
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
       <div className="bg-zinc-900 border border-white/10 rounded-2xl p-3">
         <div className="text-xs font-medium text-zinc-400 uppercase tracking-wide px-3 mb-2">
-          Топ роста 24ч
+          Top gainers 24h
         </div>
         {gainers.map((coin) => (
           <CoinRow key={coin.id} coin={coin} isGainer={true} />
@@ -50,7 +50,7 @@ export default function GainersLosers({ coins }: Props) {
       </div>
       <div className="bg-zinc-900 border border-white/10 rounded-2xl p-3">
         <div className="text-xs font-medium text-zinc-400 uppercase tracking-wide px-3 mb-2">
-          Топ падения 24ч
+          Top losers 24h
         </div>
         {losers.map((coin) => (
           <CoinRow key={coin.id} coin={coin} isGainer={false} />

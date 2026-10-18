@@ -42,12 +42,12 @@ export default function PortfolioCard({ item, price, onRemove }: Props) {
       </div>
 
       <div className="text-right hidden sm:block">
-        <div className="text-xs text-zinc-500 mb-0.5">Количество</div>
+        <div className="text-xs text-zinc-500 mb-0.5">Amount</div>
         <div className="font-mono text-sm text-white">{item.amount}</div>
       </div>
 
       <div className="text-right hidden sm:block">
-        <div className="text-xs text-zinc-500 mb-0.5">Цена</div>
+        <div className="text-xs text-zinc-500 mb-0.5">Price</div>
         <div className="font-mono text-sm text-white">
           {price ? fmtUsd(price.current_price) : "—"}
         </div>
@@ -55,13 +55,13 @@ export default function PortfolioCard({ item, price, onRemove }: Props) {
 
       {change !== undefined && (
         <div className={`text-right hidden md:block ${change >= 0 ? "text-emerald-400" : "text-red-400"}`}>
-          <div className="text-xs text-zinc-500 mb-0.5">24ч</div>
+          <div className="text-xs text-zinc-500 mb-0.5">24h</div>
           <div className="font-mono text-sm">{fmtPct(change)}</div>
         </div>
       )}
 
       <div className="text-right">
-        <div className="text-xs text-zinc-500 mb-0.5">Сумма</div>
+        <div className="text-xs text-zinc-500 mb-0.5">Value</div>
         <div className="font-mono text-sm font-semibold text-white">
           {totalValue !== null ? fmtUsd(totalValue) : "—"}
         </div>
@@ -70,7 +70,7 @@ export default function PortfolioCard({ item, price, onRemove }: Props) {
       <button
         onClick={onRemove}
         className="text-zinc-600 hover:text-red-400 transition-colors ml-2 text-lg leading-none"
-        aria-label="Удалить"
+        aria-label="Remove"
       >
         ×
       </button>

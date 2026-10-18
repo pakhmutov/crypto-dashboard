@@ -56,9 +56,9 @@ export default function PortfolioPage() {
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Портфель</h1>
+        <h1 className="text-2xl font-bold text-white">Portfolio</h1>
         <p className="text-zinc-400 text-sm mt-1">
-          Итого:{" "}
+          Total:{" "}
           <span className="text-white font-mono font-semibold">
             {new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }).format(totalValue)}
           </span>
@@ -81,7 +81,7 @@ export default function PortfolioPage() {
             ) : (
               <input
                 type="text"
-                placeholder="Поиск монеты..."
+                placeholder="Search coin..."
                 value={search}
                 onChange={(e) => { setSearch(e.target.value); setShowDropdown(true); }}
                 onFocus={() => setShowDropdown(true)}
@@ -107,7 +107,7 @@ export default function PortfolioPage() {
 
           <input
             type="number"
-            placeholder="Количество"
+            placeholder="Amount"
             value={amount}
             min="0"
             onChange={(e) => setAmount(e.target.value)}
@@ -119,7 +119,7 @@ export default function PortfolioPage() {
             disabled={!selectedCoin || !amount || Number(amount) <= 0}
             className="h-10 px-5 bg-violet-500 hover:bg-violet-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-medium rounded-xl transition-colors"
           >
-            Добавить
+            Add
           </button>
         </div>
       </div>
@@ -127,7 +127,7 @@ export default function PortfolioPage() {
       {/* Portfolio list */}
       {items.length === 0 ? (
         <div className="text-center py-16 text-zinc-500">
-          Портфель пуст — добавь первую монету
+          Your portfolio is empty — add your first coin
         </div>
       ) : (
         <div className="flex flex-col gap-3">

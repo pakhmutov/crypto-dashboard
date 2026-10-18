@@ -32,7 +32,7 @@ export default async function CoinPage({ params }: { params: Promise<{ id: strin
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <Link href="/market" className="text-sm text-zinc-400 hover:text-white transition-colors mb-6 inline-flex items-center gap-1">
-        ← Рынок
+        ← Market
       </Link>
 
       <div className="flex flex-col sm:flex-row sm:items-center gap-4 mt-4 mb-8">
@@ -54,10 +54,10 @@ export default async function CoinPage({ params }: { params: Promise<{ id: strin
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
         {[
-          { label: "Капитализация", value: fmtLarge(coin.market_cap) },
-          { label: "Объём 24ч", value: fmtLarge(coin.total_volume) },
-          { label: "Макс. 24ч", value: fmtPrice(coin.high_24h) },
-          { label: "Мин. 24ч", value: fmtPrice(coin.low_24h) },
+          { label: "Market cap", value: fmtLarge(coin.market_cap) },
+          { label: "Volume 24h", value: fmtLarge(coin.total_volume) },
+          { label: "24h high", value: fmtPrice(coin.high_24h) },
+          { label: "24h low", value: fmtPrice(coin.low_24h) },
         ].map(({ label, value }) => (
           <div key={label} className="bg-zinc-900 border border-white/10 rounded-xl p-4">
             <div className="text-zinc-400 text-xs mb-1">{label}</div>

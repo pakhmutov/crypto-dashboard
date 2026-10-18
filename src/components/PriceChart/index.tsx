@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import { createChart, CandlestickSeries, type IChartApi, type ISeriesApi, type Time } from "lightweight-charts";
 
 const PERIODS = [
-  { label: "1Н", days: 7 },
-  { label: "1М", days: 30 },
-  { label: "3М", days: 90 },
-  { label: "1Г", days: 365 },
+  { label: "1W", days: 7 },
+  { label: "1M", days: 30 },
+  { label: "3M", days: 90 },
+  { label: "1Y", days: 365 },
 ];
 
 interface Props {
@@ -111,7 +111,7 @@ export default function PriceChart({ coinId, initialData }: Props) {
             {p.label}
           </button>
         ))}
-        {loading && <span className="ml-2 text-xs text-zinc-500">Загрузка...</span>}
+        {loading && <span className="ml-2 text-xs text-zinc-500">Loading...</span>}
       </div>
       <div ref={containerRef} />
     </div>

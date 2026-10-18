@@ -10,8 +10,8 @@ export default async function MarketPage() {
   return (
     <main className="max-w-6xl mx-auto px-4 py-8">
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-white">Рынок</h1>
-        <p className="text-zinc-400 text-sm mt-1">Топ-50 по капитализации · обновляется каждые 60 сек</p>
+        <h1 className="text-2xl font-bold text-white">Market</h1>
+        <p className="text-zinc-400 text-sm mt-1">Top 50 by market cap · updates every 60 sec</p>
       </div>
       <GainersLosers coins={coins} />
       <div className="bg-zinc-900 rounded-2xl border border-white/10 px-4 py-2">

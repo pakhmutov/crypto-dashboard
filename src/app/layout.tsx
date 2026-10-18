@@ -8,7 +8,7 @@ const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"]
 
 export const metadata: Metadata = {
   title: "Crypto Dashboard",
-  description: "Персональный дашборд для отслеживания крипто-рынка и портфеля",
+  description: "Personal dashboard for tracking the crypto market and your portfolio",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -22,10 +22,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </Link>
             <div className="flex items-center gap-1">
               <Link href="/market" className="px-3 py-1.5 rounded-lg text-sm text-zinc-400 hover:text-white hover:bg-white/10 transition-colors">
-                Рынок
+                Market
               </Link>
               <Link href="/portfolio" className="px-3 py-1.5 rounded-lg text-sm text-zinc-400 hover:text-white hover:bg-white/10 transition-colors">
-                Портфель
+                Portfolio
               </Link>
             </div>
           </div>

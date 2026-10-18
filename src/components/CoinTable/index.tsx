@@ -33,17 +33,17 @@ export default function CoinTable({ coins }: Props) {
                 <thead>
                     <tr className="border-b border-white/10 text-zinc-400 text-left">
                         <th className="py-3 pr-4 font-medium w-10">#</th>
-                        <th className="py-3 pr-4 font-medium">Монета</th>
-                        <th className="py-3 pr-4 font-medium text-right">Цена</th>
-                        <th className="py-3 pr-4 font-medium text-right">24ч %</th>
+                        <th className="py-3 pr-4 font-medium">Coin</th>
+                        <th className="py-3 pr-4 font-medium text-right">Price</th>
+                        <th className="py-3 pr-4 font-medium text-right">24h %</th>
                         <th className="py-3 pr-4 font-medium text-right hidden md:table-cell">
-                            Кап.
+                            Market cap
                         </th>
                         <th className="py-3 pr-4 font-medium text-right hidden lg:table-cell">
-                            Объём 24ч
+                            Volume 24h
                         </th>
                         <th className="py-3 font-medium text-right hidden xl:table-cell">
-                            7д
+                            7d
                         </th>
                     </tr>
                 </thead>
